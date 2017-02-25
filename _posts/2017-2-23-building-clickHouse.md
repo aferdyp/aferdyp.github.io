@@ -20,12 +20,11 @@ This note is meant for those who simply need to get ClickHouse running on Centos
 
 (The default GCC on Centos is at version 4.8.x. You'll need GCC 5+ to build ClickHouse. That step comes up in a bit.)
 
-`sudo yum install gcc gcc-c++`
+    sudo yum install gcc gcc-c++
 
 **Install Git and CMake**
 
-`sudo yum install git cmake
-`
+    sudo yum install git cmake
 
 **Install GCC 6 from sources**
 
