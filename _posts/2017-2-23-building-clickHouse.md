@@ -7,7 +7,10 @@ The folks over at ClickHouse have some instructions to build binaries for Debian
 This note is meant for those who simply need to get ClickHouse running on Centos 7 without the explicit need to get rpms in place. I am going to try and map these instructions to those mentioned by the ClickHouse build instructions (wherever possible).
 
 **Test for SSE 4.2**
+
 **Install gcc and gcc-c++**
+
 **Install Git and CMake**
+
 
 ....
