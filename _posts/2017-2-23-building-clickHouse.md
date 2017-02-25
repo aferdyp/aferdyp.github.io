@@ -8,9 +8,17 @@ This note is meant for those who simply need to get ClickHouse running on Centos
 
 **Test for SSE 4.2**
 
+`grep -q sse4_2 /proc/cpuinfo && echo "SSE 4.2 supported" || echo "SSE 4.2 not supported"`
+
 **Install gcc and gcc-c++**
+
+(The default gcc on Centos is at version 4.8.x. You'll need gcc 5+ to build ClickHouse)
+
+`sudo yum install gcc gcc-c++`
 
 **Install Git and CMake**
 
+`sudo yum install git cmake
+`
 
 ....
