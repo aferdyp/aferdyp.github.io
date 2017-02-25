@@ -1,4 +1,8 @@
-*Last updated on 25th Feb 2017*
+---
+layout: post
+title:  "ClickHouse on Centos 7"
+date:   2017-02-23 00:00:00 +0000
+---
 
 Instructions to build ClickHouse on Centos 7
 
