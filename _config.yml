@@ -3,5 +3,9 @@ theme: jekyll-theme-slate
 title: Zero Knowledge
 description: Random bits and pieces about other random bits and pieces
 
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://aferdyp.github.io" # the base hostname & protocol for your site
+github_username: aferdyp
+
 gems:
   - jekyll-seo-tag
