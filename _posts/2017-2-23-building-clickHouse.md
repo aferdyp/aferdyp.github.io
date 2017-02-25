@@ -21,4 +21,15 @@ This note is meant for those who simply need to get ClickHouse running on Centos
 `sudo yum install git cmake
 `
 
+**Install GCC 6 from sources**
+
+    wget ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-6.3.0/gcc-6.3.0.tar.bz2
+    tar xf gcc-6.3.0.tar.bz2
+    cd gcc-6.3.0
+    ./contrib/download_prerequisites
+    cd ..
+    mkdir gcc-build
+    cd gcc-build
+
+
 ....
