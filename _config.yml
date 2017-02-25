@@ -2,3 +2,6 @@ theme: jekyll-theme-slate
 
 title: Aferdyp's blog
 description: Random bits and pieces about other random bits and pieces
+
+gems:
+  - jekyll-seo-tag
