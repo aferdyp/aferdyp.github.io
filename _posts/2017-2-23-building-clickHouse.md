@@ -1,7 +1,9 @@
 ---
 layout: post
+comments: true
 title:  "ClickHouse on Centos 7"
 date:   2017-02-23 00:00:00 +0000
+categories: ClickHouse
 ---
 
 Instructions to build ClickHouse on Centos 7
