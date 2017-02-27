@@ -64,8 +64,17 @@ This note is meant for those who simply need to get ClickHouse running on Centos
     sudo yum -y install mysql-community-devel
     sudo ln -s /usr/lib64/mysql/libmysqlclient.a /usr/lib64/libmysqlclient.a
     
-    
-    
+**Checkout ClickHouse sources**
 
+    git clone -b stable https://github.com/yandex/ClickHouse.git
+    cd ClickHouse
     
-....
+**Build to work with code**
+
+    mkdir build
+    cd build
+    cmake ..
+    make -j $THREADS
+    sudo make install
+    cd ..
+
