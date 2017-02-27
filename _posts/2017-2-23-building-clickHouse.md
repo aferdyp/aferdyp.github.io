@@ -22,9 +22,9 @@ This note is meant for those who simply need to get ClickHouse running on Centos
 
     sudo yum install gcc gcc-c++
 
-**Install Git and CMake**
+**Install Git, CMake and wget**
 
-    sudo yum install git cmake
+    sudo yum install git cmake wget
 
 **Install GCC 6 from sources**
 
