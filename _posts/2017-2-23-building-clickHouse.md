@@ -55,7 +55,16 @@ This note is meant for those who simply need to get ClickHouse running on Centos
     
 **Install required libraries from packages**
 
-    sudo yum install libicu-devel readline-devel openssl-devel unixODBC-devel
+    sudo yum install libicu-devel readline-devel openssl-devel unixODBC-devel libtool-ltdl-devel
+    
+**Install MySQL dependencies**
+
+    wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+    sudo yum -y --nogpgcheck install mysql57-community-release-el7-9.noarch.rpm
+    sudo yum -y install mysql-community-devel
+    sudo ln -s /usr/lib64/mysql/libmysqlclient.a /usr/lib64/libmysqlclient.a
+    
+    
     
 
     
