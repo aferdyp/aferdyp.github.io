@@ -84,7 +84,7 @@ This note is meant for those who simply need to get ClickHouse running on Centos
     sudo clickhouse-server --config=${CLICKHOUSE_CONFIG}
     clickhouse-client 
     
-Assuming that this ran fine, you should get to 
+Assuming that the setup ran fine, you should get to 
 
     [vagrant@localhost ~]$ clickhouse-client
     ClickHouse client version 1.1.54164.
