@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: false
+comments: true
 title:  "ClickHouse on Centos 7"
 date:   2017-02-23 00:00:00 +0000
 categories: ClickHouse
@@ -77,4 +77,28 @@ This note is meant for those who simply need to get ClickHouse running on Centos
     make -j $THREADS
     sudo make install
     cd ..
+
+**Starting ClickHouse**
+    
+    export CLICKHOUSE_CONFIG=/etc/clickhouse-server/config.xml
+    sudo clickhouse-server --config=${CLICKHOUSE_CONFIG}
+    clickhouse-client 
+    
+Assuming that this ran fine, you should get to 
+
+    [vagrant@localhost ~]$ clickhouse-client
+    ClickHouse client version 1.1.54164.
+    Connecting to localhost:9000.
+    Connected to ClickHouse server version 1.1.54164.
+
+    :) select 1;
+
+     SELECT 1
+
+     ┌─1─┐
+     │ 1 │
+     └───┘
+
+     1 rows in set. Elapsed: 0.014 sec. 
+
 
