@@ -169,7 +169,9 @@ jobs:
         run: python3 -m pip install pytest wheel --upgrade pip
 
       - name: Install prereqs
+        {% raw %}
         run: bash src/tools/install_pg_mac.sh ${{ github.ref }}
+        {% endraw %}
 
       - name: Build wheels
         run: python3 setup.py bdist_wheel --dist-dir wheelhouse --python-tag ${{ matrix.py-short }}
