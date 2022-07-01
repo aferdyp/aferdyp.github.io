@@ -133,7 +133,7 @@ The Github action used to setup the postgresql-wheel package builds postgresql f
 
 **Sample Github action For Python 3.7 to 3.10**
 
-```yml
+```
 name: Build Wheels for MacOS
 
 on:
