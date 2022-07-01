@@ -86,12 +86,6 @@ def django_db_setup():
     except FileNotFoundError:
         pass
 
-    try:
-        print(f'\n Initializing {pgdata.name}....')
-        shutil.rmtree(pgdata.name)
-    except OSError as e:
-        print(f'{e.filename} - {e.strerror}')
-
     initdb(f'-D {pgdata.name} --auth=trust --no-sync -U postgres')
     pg_ctl(f'-D {pgdata.name} -o "-p {port} -k {pgdata.name} -h \\"\\"" -l {log} start')
 
