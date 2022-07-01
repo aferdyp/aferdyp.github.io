@@ -133,7 +133,7 @@ The Github action used to setup the postgresql-wheel package builds postgresql f
 
 **Sample Github action For Python 3.7 to 3.10**
 
-```
+```yml
 name: Build Wheels for MacOS
 
 on:
@@ -169,16 +169,14 @@ jobs:
         run: python3 -m pip install pytest wheel --upgrade pip
 
       - name: Install prereqs
-        {% raw %}
-        run: bash src/tools/install_pg_mac.sh ${{ github.ref }}
-        {% endraw %}
+        run: bash src/tools/install_pg_mac.sh {% raw %}${{ github.ref }}{% endraw %}
 
       - name: Build wheels
-        run: python3 setup.py bdist_wheel --dist-dir wheelhouse --python-tag ${{ matrix.py-short }}
+        run: python3 setup.py bdist_wheel --dist-dir wheelhouse --python-tag {% raw %}${{ matrix.py-short }}{% endraw %}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: artifact-${{ matrix.py-short }}
+          name: artifact-{% raw %}${{ matrix.py-short }}{% endraw %}
           path: ./wheelhouse/*.whl
 ```
 
