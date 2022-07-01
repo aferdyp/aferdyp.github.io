@@ -64,9 +64,8 @@ def run_sql(sql, user, host, port):
     conn.close()
 
 
-def run_psql(user, host, port):
+def run_psql(sql_file, user, host, port):
     print('running psql.....')
-    sql_file = '/path/to/pollsddl.sql'
     cmd_str = psql(f'-d pollsdb -U {user} -h {host} -p {port} -a -f {sql_file}')
     print(cmd_str)
 
@@ -97,7 +96,8 @@ def django_db_setup():
 
     run_sql('DROP DATABASE IF EXISTS pollsdb', user=user, host=host, port=port)
     run_sql('CREATE DATABASE pollsdb', user=user, host=host, port=port)
-    run_psql(user=user, host=host, port=port)
+    sql_file = '/path/to/pollsddl.sql'
+    run_psql(sql_file=sql_file, user=user, host=host, port=port)
 
     yield
 
