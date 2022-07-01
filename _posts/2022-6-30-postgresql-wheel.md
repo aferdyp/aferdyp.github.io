@@ -118,3 +118,18 @@ def django_db_setup():
     except OSError as e:
         print(f'{e.filename} - {e.strerror}')
 ```
+
+**Sample test case**
+
+```python
+import pytest
+from polls.models import Question
+
+
+@pytest.mark.django_db
+def test_questions():
+    assert Question.objects.count() == 0
+```
+
+A couple of gotchas -
+- If you are trying to restore from a previous pg_dump backup, use the `run_psql` variant rather than `run_sql`. As mentioned here [how to execute non sql commands in psycopg2](https://stackoverflow.com/questions/53077083/how-to-execute-non-sql-commands-in-psycopg2), you would need to be wary of psql specific commands
