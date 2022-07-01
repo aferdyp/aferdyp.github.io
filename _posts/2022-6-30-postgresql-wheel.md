@@ -96,8 +96,7 @@ def django_db_setup():
 
     run_sql('DROP DATABASE IF EXISTS pollsdb', user=user, host=host, port=port)
     run_sql('CREATE DATABASE pollsdb', user=user, host=host, port=port)
-    sql_file = '/path/to/pollsddl.sql'
-    run_psql(sql_file=sql_file, user=user, host=host, port=port)
+    run_psql('/path/to/pollsddl.sql', user=user, host=host, port=port)
 
     yield
 
