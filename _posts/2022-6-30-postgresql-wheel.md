@@ -13,8 +13,8 @@ Setting up a database while also making sure that the right versions are altoget
 
 **Prerequisites (there are a few tweaks that can be made to get it running on MacOS)**
 - Python 3.7 to 3.9
-- The current packages in pypi will run on most Linux systems
-- The packages are versioned such that verion x.y.z implies that Postgres version x.y comes bundled. (for the moment, there is an issue with version above 14.1.0). So for now this blog uses 14.1.0. (As a FYI - it's not that hard to have your own build with say a later version of Postgres. You can get a copy of the artifact/package via the output from Github actions. However, you won't be able to get it in pypi)
+- The current `postgresql-wheel` packages in pypi will run on most Linux systems
+- The packages are versioned such that verion x.y.z implies that Postgres version x.y comes bundled. (for the moment, there is an issue with version above 14.1.0). So for now this blog uses 14.1.0. (As a FYI - it's not that hard to have your own build with say a later version of Postgres. You can get a copy of the artifact/package via the output from Github actions from possibly your own fork of the repo. However, you won't be able to get it in pypi)
 
 **Sample requirements**
 
