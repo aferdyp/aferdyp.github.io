@@ -180,7 +180,7 @@ jobs:
           path: ./wheelhouse/*.whl
 ```
 
-**Sample MacOS "build" script**
+**Sample MacOS "build" script - install_pg_mac.sh**
 
 ```bash
 curl -L -o postgresql-14.4-1-osx-binaries.zip https://sbp.enterprisedb.com/getfile.jsp?fileid=1258117
