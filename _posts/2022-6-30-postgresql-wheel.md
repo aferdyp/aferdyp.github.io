@@ -126,3 +126,69 @@ def test_questions():
 
 A couple of gotchas -
 - If you are trying to restore from a previous pg_dump backup, use the `run_psql` variant rather than `run_sql`. As mentioned here [how to execute non sql commands in psycopg2](https://stackoverflow.com/questions/53077083/how-to-execute-non-sql-commands-in-psycopg2), you would need to be wary of psql specific commands
+
+
+**Getting a Mac version of postgresql-wheel**
+
+The Github action used to setup the postgresql-wheel package builds postgresql from source. This would have been doable for MacOS as well since Github actions does have corresponding runners. However, github actions does not yet support MacOS M1. So the idea here is to use the binaries provided by [EnterpriseDB](https://www.enterprisedb.com/download-postgresql-binaries)
+
+**Sample Github action For Python 3.7 to 3.10**
+
+```yaml
+name: Build Wheels for MacOS
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        os: [macos-latest]
+        python-version: [3.7, 3.8, 3.9, 3.10]
+        include:
+          - python-version: '3.7'
+            py-short: 'py37'
+          - python-version: '3.8'
+            py-short: 'py38'
+          - python-version: '3.9'
+            py-short: 'py39'
+          - python-version: '3.10'
+            py-short: 'py310'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+
+      - name: Install dependencies
+        run: python3 -m pip install pytest wheel --upgrade pip
+
+      - name: Install prereqs
+        run: bash src/tools/install_pg_mac.sh ${{ github.ref }}
+
+      - name: Build wheels
+        run: python3 setup.py bdist_wheel --dist-dir wheelhouse --python-tag ${{ matrix.py-short }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifact-${{ matrix.py-short }}
+          path: ./wheelhouse/*.whl
+```
+
+**Sample MacOS "build" script**
+
+```bash
+curl -L -o postgresql-14.4-1-osx-binaries.zip https://sbp.enterprisedb.com/getfile.jsp?fileid=1258117
+unzip -q postgresql-14.4-1-osx-binaries.zip
+for dirname in bin lib include share; do
+  mv  -v ./pgsql/$dirname ./src/postgresql/
+done
+```
+
+Once the Github action is done, you should see 4 artifact zip files containing their respective wheels. The zip files are larger in size compared to the Linux counterparts since it uses pre-built binaries. It does seem to work well on M1 Macs. I haven't had a chance to try this out on Intel Macs though.
